@@ -7,7 +7,7 @@
 	{% for country, value in prices.items() %}
 		<li><h2>{{ country }}</h2>{{ (value * factor) | round(2) }} Ð<br/>
 	{% else %}
-		<li><em>Unbelievable.	No prices here so far</em>
+		<li><em>Unbelievable.	No prices here!</em>
 	{% endfor %}
 	</ul>
 {% endblock %}

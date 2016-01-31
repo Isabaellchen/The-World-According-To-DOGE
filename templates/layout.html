@@ -1,8 +1,14 @@
 <!doctype html>
+<head>
 <title>TWATDoge</title>
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<div class="logo">
+	<div class="moon_rotating"></div>
+	<div class="kabosu"></div>
+</div>
 <div class=page>
-  <h1>The World According To DOGE</h1>
   {% for message in get_flashed_messages() %}
     <div class=flash>{{ message }}</div>
   {% endfor %}
