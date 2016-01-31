@@ -1,21 +1,13 @@
 {% extends "layout.html" %}
 {% block body %}
-  {% if session.logged_in %}
-    <form action="{{ url_for('add_price') }}" method=post class=add-price>
-      <dl>
-        <dt>Name:
-        <dd><input type=text size=30 name=name>
-        <dt>Factor:
-        <dd><input type=number step="0.01" name=factor>
-        <dd><input type=submit value=Share>
-      </dl>
-    </form>
-  {% endif %}
-  <ul class=prices>
-  {% for price in prices %}
-    <li><h2>{{ price.name }}</h2>{{ price.factor|safe }}<br/><i>updated on: {{price.updated_at}}</i>
-  {% else %}
-    <li><em>Unbelievable.  No prices here so far</em>
-  {% endfor %}
-  </ul>
+	<div>
+		<span>Currently one US-Dollar costs ~ {{factor|round(2)}} Ð</span>
+	</div>
+	<ul class=prices>
+	{% for country, value in prices.items() %}
+		<li><h2>{{ country }}</h2>{{ (value * factor) | round(2) }} Ð<br/>
+	{% else %}
+		<li><em>Unbelievable.	No prices here so far</em>
+	{% endfor %}
+	</ul>
 {% endblock %}

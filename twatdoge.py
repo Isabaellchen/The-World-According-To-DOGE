@@ -12,6 +12,8 @@
 
 import os
 import datetime
+from coinmarketcap import Coinmarketcap
+from bigmacindex import BigMacIndex
 from sqlite3 import dbapi2 as sqlite3
 from contextlib import closing
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
@@ -91,13 +93,20 @@ def teardown_request():
 '''
 
 # Routes & views
-
+'''
 @app.route('/')
 def show_prices():
     db = get_db()
     cur = db.execute('select name, factor, updated_at from prices order by id desc')
     prices = cur.fetchall()
     return render_template('show_prices.html', prices=prices)
+'''
+
+@app.route('/')
+def show_prices():
+    prices = BigMacIndex().read_index()
+    factor = Coinmarketcap().getUSDDogeValue()
+    return render_template('show_prices.html', prices=prices, factor=factor)
 
 
 @app.route('/add', methods=['POST'])

@@ -21,6 +21,6 @@ class BigMacIndex(object):
     def read_index(self, timerange = 0):
         book = xlrd.open_workbook(self.temp_file)
         sheet = book.sheet_by_index(timerange)
-        for row in range(sheet.nrows):
-            self.prices[sheet.cell_value(row, 0)] = sheet.cell_value(row, 3)
+        for row in range(1,sheet.nrows):
+            self.prices[sheet.cell_value(row, 0)] = float(sheet.cell_value(row, 3))
         return self.prices
