@@ -5,7 +5,12 @@
 	</div>
 	<ul class=prices>
 	{% for country, value in prices.items() %}
-		<li><h2>{{ country }}</h2>{{ (value * factor) | round(2) }} Ð<br/>
+		<li>
+			<h2>{{ country }}</h2>
+			{% if value[1] %}
+			<img style="width: 50px; height: 31px;" src="{{ url_for('static', filename=value[1]) }}"></br>
+			{% endif %}
+			{{ (value[0] * factor) | round(2) }} Ð<br/>
 	{% else %}
 		<li><em>Unbelievable.	No prices here!</em>
 	{% endfor %}

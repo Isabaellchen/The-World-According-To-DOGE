@@ -1,5 +1,5 @@
-body            { font-family: sans-serif; background: #dc5202; background-image: url("images/head_bg.jpg"); background-position: top center; background-repeat: no-repeat; }
-a, h1, h2       { color: #377ba8; }
+body            { font-family: sans-serif; background: #dc5202; background-size: 100% 10%; background-image: url("images/head_bg.jpg"); background-position: top center; background-repeat: no-repeat; }
+a, h1, h2       { color: #fff; }
 h1, h2          { font-family: 'Georgia', serif; margin: 0; }
 h1              { border-bottom: 2px solid #eee; }
 h2              { font-size: 1.2em; }

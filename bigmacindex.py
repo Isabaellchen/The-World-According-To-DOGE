@@ -1,6 +1,7 @@
 import xlrd
 import requests
 import datetime
+import pycountry
 
 class BigMacIndex(object):
     
@@ -22,5 +23,11 @@ class BigMacIndex(object):
         book = xlrd.open_workbook(self.temp_file)
         sheet = book.sheet_by_index(timerange)
         for row in range(1,sheet.nrows):
-            self.prices[sheet.cell_value(row, 0)] = float(sheet.cell_value(row, 3))
+            name = sheet.cell_value(row, 0)
+            try:
+                country = pycountry.countries.get(name=name)
+                abbreviation = str(country.alpha_2).lower()
+            except KeyError:
+                abbreviation = "un"
+            self.prices[name] = (float(sheet.cell_value(row, 3)), 'images/flags/' + abbreviation + '.png')
         return self.prices
