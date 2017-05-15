@@ -21,8 +21,10 @@ app = Flask(__name__)
 class Config(object):
     DEBUG = False
     TESTING = False
+    PROD = False
 
 class ProductionConfig(Config):
+    PROD = True
 
 class DevelopmentConfig(Config):
     DEBUG = True
