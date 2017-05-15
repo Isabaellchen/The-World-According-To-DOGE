@@ -1,18 +1,24 @@
 {% extends "layout.html" %}
 {% block body %}
-	<div>
-		<span>Currently one US-Dollar costs ~ {{factor|round(2)}} Ð</span>
+	<div class="dollar">
+        <div>
+        <img class="bill" src="{{ url_for('static', filename='images/cash.png') }}">
+            </div>
+		<div class="description">Currently 1 US-Dollar costs about:</div>
+        <div class="doge_value">Ð{{factor|round(2)}}</div>
 	</div>
 	<ul class=prices>
 	{% for country, value in prices.items() %}
-		<li>
-			<h2>{{ country }}</h2>
+		<li style="order: {{ (value[0] * -1000) | round | int }};">
+			<h2 style="transform: rotate({{ value[3] }}deg)">{{ country }}</h2>
 			{% if value[1] %}
-			<img style="width: 50px; height: 31px;" src="{{ url_for('static', filename=value[1]) }}"></br>
+            <img class="bigmac" src="{{ url_for('static', filename=value[2]) }}">
+			<img class="flag" src="{{ url_for('static', filename=value[1]) }}"></br>
 			{% endif %}
-			{{ (value[0] * factor) | round(2) }} Ð<br/>
+            <p class="price_display">Ð{{ (value[0] * factor) | round(2) }}</p><br/>
+        </li>
 	{% else %}
-		<li><em>Unbelievable.	No prices here!</em>
+        <li><em>Unbelievable.	No prices here!</em></li>
 	{% endfor %}
 	</ul>
 {% endblock %}

@@ -3,10 +3,23 @@ import requests
 import datetime
 import pycountry
 
+from random import randrange
+
 class BigMacIndex(object):
     
     temp_file = 'temp.xls'
     prices = {}
+    country_exception = {
+            'Britain': 'gb',
+            'Euro area': 'eu',
+            'Czech Republic': 'cz',
+            'Russia': 'ru',
+            'South Korea': 'kr',
+            'Taiwan': 'tw',
+            'UAE': 'ae',
+            'Venezuela': 've',
+            'Vietnam': 'vn'
+        }
     
     def update_index(self):
         xls_file = requests.get(self.get_url())
@@ -28,6 +41,14 @@ class BigMacIndex(object):
                 country = pycountry.countries.get(name=name)
                 abbreviation = str(country.alpha_2).lower()
             except KeyError:
-                abbreviation = "un"
-            self.prices[name] = (float(sheet.cell_value(row, 3)), 'images/flags/' + abbreviation + '.png')
+                abbreviation = self.country_exception[name]
+                
+            rnd_burger_num = str(randrange(1,6))
+                
+            final_value = float(sheet.cell_value(row, 3))
+            flag_path = 'images/flags/' + abbreviation + '.png'
+            bigmac_path = 'images/bigmacs/bigmac' + rnd_burger_num + '.png'
+            name_rotation = str(randrange(-5,5))
+                
+            self.prices[name] = (final_value, flag_path, bigmac_path, name_rotation)
         return self.prices

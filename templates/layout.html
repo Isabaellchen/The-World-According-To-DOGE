@@ -3,14 +3,16 @@
 <title>TWATDoge</title>
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 </head>
-
-<div class="logo">
-	<div class="moon_rotating"></div>
-	<div class="kabosu"></div>
-</div>
+<body>
+    <a id="top"></a>
+<img src="{{ url_for('static', filename='images/new_logo.png') }}" class="logo"></img>
+<img src="{{ url_for('static', filename='images/moon_rotating.gif') }}" class="moon_rotating"></img>
+<a href="#top" class="kabosu"><img src="{{ url_for('static', filename='images/kabosu.png') }}"></img></a>
 <div class=page>
   {% for message in get_flashed_messages() %}
     <div class=flash>{{ message }}</div>
   {% endfor %}
   {% block body %}{% endblock %}
 </div>
+</body>
+</html>
