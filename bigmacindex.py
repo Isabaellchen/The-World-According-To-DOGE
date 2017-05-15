@@ -28,7 +28,7 @@ class BigMacIndex(object):
         
     def get_url(self):
         d = datetime.datetime.now()
-        url = 'http://infographics.economist.com/{}/databank/BMfile2000to{}{}.xls'\
+        url = 'http://infographics.economist.com/{}/databank/BMFile2000to{}{}.xls'\
             .format(d.year,d.strftime("%b"),d.year)
         return url
         
