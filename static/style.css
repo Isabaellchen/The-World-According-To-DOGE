@@ -140,7 +140,7 @@ h2              {
 .bill           {
     position: absolute;
     left: 30%;
-    top: 3vh;
+    top: 7vw;
     transform: translateX(-65%);
     min-width: 15vw;
     max-width: 18vw;
