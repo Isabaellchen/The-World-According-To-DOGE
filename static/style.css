@@ -112,8 +112,8 @@ h2              {
 .page           {
     position: relative;
     border: none;
-    padding: 0.8em 0.8em 10em 0.8em;
-    margin: 2em auto; 
+    padding: 0.8em 0.8em 0.8em 0.8em;
+    margin-top: 2em; 
     width: 100%;
     background-color: rgba(157,64,1,0.8); 
     z-index: 2;
