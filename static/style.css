@@ -115,7 +115,7 @@ h2              {
     padding: 0.8em 0.8em 10em 0.8em;
     margin: 2em auto; 
     width: 100%;
-    background-color: rgba(157,64,1,0.9); 
+    background-color: rgba(157,64,1,0.8); 
     z-index: 2;
 }
 .prices        { 
@@ -215,9 +215,10 @@ h2              {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#009d4001', endColorstr='#793201',GradientType=0 ); /* IE6-9 */
 }
 .bill           {
-    max-height: 20vh;
+    max-height: 17vh;
     width: auto;
     z-index: 5;
+    margin-top: 1vh;
 }
 .description    {
     text-shadow: 2px 2px black;

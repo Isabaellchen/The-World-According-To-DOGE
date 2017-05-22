@@ -14,7 +14,12 @@ import datetime
 from coinmarketcap import Coinmarketcap
 from bigmacindex import BigMacIndex
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
+from flask.ext.cache import Cache
+
 app = Flask(__name__)
+
+cache = Cache(app,config={'CACHE_TYPE': 'simple'})
+cache.init_app(app)
 
 # Define configs
 
@@ -37,6 +42,7 @@ app.config.from_object('twatdoge.DevelopmentConfig')
 
 # DB Methods
 
+@cache.cached(timeout=3600)
 @app.route('/')
 def show_prices():
     prices = BigMacIndex().read_index()
