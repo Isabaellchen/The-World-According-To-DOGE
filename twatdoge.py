@@ -33,15 +33,15 @@ class TestingConfig(Config):
     TESTING = True
 
 # Load config
-app.config.from_object('twatdoge.ProductionConfig')
+app.config.from_object('twatdoge.DevelopmentConfig')
 
 # DB Methods
 
 @app.route('/')
 def show_prices():
     prices = BigMacIndex().read_index()
-    factor = Coinmarketcap().getUSDDogeValue()
-    return render_template('show_prices.html', prices=prices, factor=factor)
+    values = Coinmarketcap().getDogeValue()
+    return render_template('show_prices.html', prices=prices, usd_value=values[0], btc_value=values[1])
 
 
     

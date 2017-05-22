@@ -1,24 +1,50 @@
 {% extends "layout.html" %}
 {% block body %}
-	<div class="dollar">
-        <div>
-        <img class="bill" src="{{ url_for('static', filename='images/cash.png') }}">
-            </div>
-		<div class="description">Currently 1 US-Dollar is at about:</div>
-        <div class="doge_value">Ð{{factor|round(2)}}</div>
-	</div>
-	<ul class=prices>
-	{% for country, value in prices.items() %}
-		<li style="order: {{ (value[0] * -1000) | round | int }};">
-			<h2 style="transform: rotate({{ value[3] }}deg)">{{ country }}</h2>
-			{% if value[1] %}
-            <img class="bigmac" src="{{ url_for('static', filename=value[2]) }}">
-			<img class="flag" src="{{ url_for('static', filename=value[1]) }}"></br>
-			{% endif %}
-            <p class="price_display">Ð{{ (value[0] * factor) | round(2) }}</p><br/>
-        </li>
-	{% else %}
-        <li><em>Unbelievable.	No prices here!</em></li>
-	{% endfor %}
-	</ul>
+    <article class="page">
+        <article class="topic">
+            <p class="headline">Currencies</p>
+            <ul class="currencies">
+                <li>
+                    <div class="currency">
+                        <div class="currency-image">
+                            <img class="bill" src="{{ url_for('static', filename='images/cash.png') }}"/>
+                        </div>
+                        <div class="currency-text">
+                            <div class="description">Currently 1 USD is at about:</div>
+                            <div class="doge_value"><span class="dee">Ð</span>{{usd_value|round(2)}}</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="currency">
+                        <div class="currency-image">
+                            <img class="bill" src="{{ url_for('static', filename='images/btc.png') }}"/>
+                        </div>
+                        <div class="currency-text">
+                            <div class="description">Currently 1 BTC is at about:</div>
+                            <div class="doge_value"><span class="dee">Ð</span>{{btc_value|round(2)}}</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </article>
+        <article class="topic">
+            <p class="headline">BigMacIndex</p>
+            <ul class="prices">
+            {% for country, value in prices.items() %}
+                <li class="single-price" style="order: {{ (value[0] * -1000) | round | int }};">
+                    <h2 style="transform: rotate({{ value[3] }}deg)">{{ country }}</h2>
+                    {% if value[1] %}
+                    <img class="bigmac" src="{{ url_for('static', filename=value[2]) }}">
+                    <img class="flag" src="{{ url_for('static', filename=value[1]) }}"></br>
+                    {% endif %}
+                    <p class="price_display">Ð{{ (value[0] * usd_value) | round(2) }}</p><br/>
+                </li>
+            {% else %}
+                <li><em>Unbelievable.	No prices here!</em></li>
+            {% endfor %}
+            </ul>
+        </article>
+    </article>
+<img src="{{ url_for('static', filename='images/rocket_bg.jpg') }}" class="rocket"/>
 {% endblock %}
