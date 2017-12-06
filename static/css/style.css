@@ -1,9 +1,9 @@
 @font-face {
     font-family: 'BadaBoom-BB';
-    src:url('fonts/BadaBoom-BB.ttf.woff') format('woff'),
-        url('fonts/BadaBoom-BB.ttf.svg#BadaBoom-BB') format('svg'),
-        url('fonts/BadaBoom-BB.ttf.eot'),
-        url('fonts/BadaBoom-BB.ttf.eot?#iefix') format('embedded-opentype'); 
+    src:url('../fonts/BadaBoom-BB.ttf.woff') format('woff'),
+        url('../fonts/BadaBoom-BB.ttf.svg#BadaBoom-BB') format('svg'),
+        url('../fonts/BadaBoom-BB.ttf.eot'),
+        url('../fonts/BadaBoom-BB.ttf.eot?#iefix') format('embedded-opentype'); 
     font-weight: normal;
     font-style: normal;
 }
@@ -20,7 +20,7 @@ body            {
     font-family: "Comic Sans MS", cursive, sans-serif;
     background: #dc5202; 
     background-size: 100% 50%; 
-    background-image: url("images/head_bg.jpg"); 
+    background-image: url("../images/head_bg.jpg"); 
     background-position: center top; 
     background-repeat: no-repeat; 
     color: #fff;
@@ -95,7 +95,7 @@ h2              {
     font-family: 'BadaBoom-BB';
     font-size: 7vw;
     text-shadow: 2px 2px black;
-    background-image: url(images/wood-sign.png);
+    background-image: url(../images/wood-sign.png);
     background-size: cover;
     background-repeat: no-repeat;
     padding: 1vh 2vh;

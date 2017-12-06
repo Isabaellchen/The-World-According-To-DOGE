@@ -40,16 +40,39 @@ class TestingConfig(Config):
 # Load config
 app.config.from_object('twatdoge.DevelopmentConfig')
 
-# DB Methods
+    
+@cache.cached(timeout=600, key_prefix='usd_value')
+def cached_usd_value():
+    return Coinmarketcap().getUSDValue()
+    
+    
+@cache.cached(timeout=600, key_prefix='btc_value')
+def cached_btc_value():
+    return Coinmarketcap().getBTCValue()
 
-@cache.cached(timeout=3600)
+
 @app.route('/')
+@cache.cached(timeout=600)
 def show_prices():
     prices = BigMacIndex().read_index()
-    values = Coinmarketcap().getDogeValue()
-    return render_template('show_prices.html', prices=prices, usd_value=values[0], btc_value=values[1])
-
-
+    usd_value = cached_usd_value()
+    btc_value = cached_btc_value()
+    return render_template('show_prices.html', prices=prices, usd_value=usd_value, btc_value=btc_value)
+    
+    
+@app.route('/price/<currency>')
+@cache.cached(timeout=600)
+def price_service(currency):
+    return {
+        'USD': str(cached_usd_value()),
+        'BTC': str(cached_btc_value())
+    }.get(currency, ('', 404))
+    
+@app.route('/qr/')
+@cache.cached(timeout=600)
+def qr_display():
+    return render_template('qr_display.html')
+    
     
 if __name__ == '__main__':
     app.run()

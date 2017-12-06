@@ -20,23 +20,36 @@ class BigMacIndex(object):
             'Venezuela': 've',
             'Vietnam': 'vn'
         }
+        
     
     def update_index(self):
-        xls_file = requests.get(self.get_url())
+        d = datetime.datetime.now()
+        year = d.year
+        month = 'Jan'
+        
+        # shifted by one month to accomodate update cycles
+        if (d.month > 7):
+            month = 'Jul'
+        elif (d.month < 2):
+            month = 'Jul'
+            year = d.year - 1
+        
+        url = 'http://infographics.economist.com/{}/databank/BMFile2000to{}{}.xls'\
+            .format(year,month,year)
+            
+        xls_file = requests.get(url)
+        
         with open(self.temp_file, 'wb') as file:
             file.write(xls_file.content)
-        
-    def get_url(self):
-        d = datetime.datetime.now()
-        url = 'http://infographics.economist.com/{}/databank/BMFile2000to{}{}.xls'\
-            .format(d.year,d.strftime("%b"),d.year)
-        return url
+            
         
     def read_index(self, timerange = 0):
         book = xlrd.open_workbook(self.temp_file)
         sheet = book.sheet_by_index(timerange)
+        
         for row in range(1,sheet.nrows):
             name = sheet.cell_value(row, 0)
+            
             try:
                 country = pycountry.countries.get(name=name)
                 abbreviation = str(country.alpha_2).lower()
