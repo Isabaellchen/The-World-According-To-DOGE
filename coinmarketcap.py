@@ -1,23 +1,21 @@
 from lxml import html
 import requests
+import datetime
+from pytz import timezone
+import pytz
+
 
 class Coinmarketcap(object):
     
     url = 'http://coinmarketcap.com/all/views/all/'
-    
-    def parseCMCPage(self):
+        
+    def getCurrentValue(self, symbol):
+        tz = timezone('Europe/Berlin')
+        raw_date = tz.normalize(tz.localize(datetime.datetime.now())).astimezone(pytz.utc)
+        timestamp = int(raw_date.timestamp())
+        
         page = requests.get(self.url)
-        return html.fromstring(page.content)
-        
-    def invertDogeValue(self, value):
-        return 1 / value
-        
-    def getUSDValue(self):
-        tree = self.parseCMCPage()
-        usd_price = tree.xpath('//tr[@id="id-dogecoin"]/td//a[@class="price"]/@data-usd')
-        return self.invertDogeValue(float(usd_price[0]))
-        
-    def getBTCValue(self):
-        tree = self.parseCMCPage()
-        btc_price = tree.xpath('//tr[@id="id-dogecoin"]/td//a[@class="price"]/@data-btc')
-        return self.invertDogeValue(float(btc_price[0]))
+        tree = html.fromstring(page.content)
+        value = tree.xpath('//tr[@id="id-dogecoin"]/td//a[@class="price"]/@data-' + symbol)
+        float_value = float(value[0])
+        return {'value': 1 / float_value, 'cvalue' : float_value, 'utc': timestamp}

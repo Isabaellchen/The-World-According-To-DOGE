@@ -65,3 +65,9 @@ class BigMacIndex(object):
                 
             self.prices[name] = (final_value, flag_path, bigmac_path, name_rotation)
         return self.prices
+        
+
+index = BigMacIndex()
+
+if __name__ == '__main__':
+    index.update_index()

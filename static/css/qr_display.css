@@ -1,0 +1,31 @@
+@font-face {
+	font-family: 'BadaBoom-BB';
+	src: url('../fonts/BadaBoom-BB.ttf.woff') format('woff'),
+	url('../fonts/BadaBoom-BB.ttf.svg#BadaBoom-BB') format('svg'),
+	url('../fonts/BadaBoom-BB.ttf.eot'),
+	url('../fonts/BadaBoom-BB.ttf.eot?#iefix') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-color: #fff;
+	color: #000;
+	font-size: 1.6vw;
+}
+
+.content {
+	position: absolute;
+	border: 0.5px solid #000;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.font2 {
+	font-size: 2vw;
+	margin: 0; 
+    text-shadow: 2px 2px black;
+	color: #f8d467;
+	
+}
