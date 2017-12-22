@@ -2,22 +2,52 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/qr_display.css') }}" ></link>
-		<script src="{{ url_for('static', filename='js/qrenc.js') }}" ></script>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/qr_display.css') }}"/>
+		<script src="{{ url_for('static', filename='js/kjua-0.1.1.min.js') }}" ></script>
 		<script src="{{ url_for('static', filename='js/setup.js') }}" ></script>
 	</head>
 	<body onload="show()">
-		<center>
-		<div class="content">
-			<div id="qrdiv">
-				<p>Pay <span class="font2">500 USD</span> with dogecoin.</p>
-				<canvas id="qrcanv">No Canvas Support?</canvas>
+		<div class="showcase">
+			<button class="accordion">Send Now</button>
+			<div class="panel">
+				<div class="content">
+					<div class="block">
+						<div class="deal-with-it"></div>
+					</div>
+					<div class="block infotext">
+						<p>You have requested to send around <span class="highlight" id="amount"></span> <span class="highlight" id="request_currency"></span> to address <span id="address"></span></p>
+						<p>At the current dogecoin value of <span class="highlight" id="rate"></span> <span class="highlight" id="currency_currency"></span> per ÐOGE (<span id="timestamp"></span>) this is approximately <span class="highlight" id="finaldoge"></span> <span class="highlight">ÐOGE</span></p>
+					</div>
+					<div class="block">
+						<div id="pay_qr"></div>
+						<a id="payment_link" href="">Send Now</a>
+					</div>
+				</div>
 			</div>
-			<a id="payment_link" href="">Pay Now</a>
-			<div id="qrdiv2">
-				<canvas id="qrcanv2">No Canvas Support?</canvas>
+			<button class="accordion">Share Now</button>
+			<div class="panel">
+				<div class="content">
+					<div id="share_qr">
+
+					</div>
+					<a id="share_link">Permanent link to this page.</a>
+				</div>
+			</div>
+			<button class="accordion">Create your own</button>
+			<div class="panel">
+				<div class="content">
+					<div class="deal-with-it"></div>
+					<form action="/send">
+							<p>Send the rough estimate value of <input class="amount inline-edit" type="text" name="amount"><select name="currency">
+									<option value="USD">USD</option>
+									<option value="BTC">BTC</option>
+								</select> in dogecoin,
+							to address <input class="address inline-edit" type="text" name="address">.
+							<input type="submit" value="Go"></p>
+						</form>
+				</div>
 			</div>
 		</div>
-	</center>
 	</body>
 </html>
+

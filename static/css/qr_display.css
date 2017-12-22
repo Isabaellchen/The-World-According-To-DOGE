@@ -10,22 +10,86 @@
 
 body {
 	font-family: "Comic Sans MS", cursive, sans-serif;
-	font-color: #fff;
 	color: #000;
-	font-size: 1.6vw;
+	font-size: 1em;
+	background-color: #fff;
+	text-align: center;
 }
 
 .content {
-	position: absolute;
-	border: 0.5px solid #000;
-	left: 50%;
-	transform: translateX(-50%);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	padding: 2vw;
+	flex-wrap: wrap;
+}
+p span {
+	font-weight: bold;
 }
 
-.font2 {
-	font-size: 2vw;
-	margin: 0; 
-    text-shadow: 2px 2px black;
+.block {
+}
+
+.infotext {
+	margin: 1vw;
+	width: 300px;
+}
+
+.highlight {
+	font-size: 2em;
+	margin: 0;
+	text-shadow: 2px 2px black;
 	color: #f8d467;
-	
+}
+
+.showcase {
+	position: absolute;
+	top: 15vh;
+	left: 15vw;
+	width: 70vw;
+	border-radius: 25px;
+	border: 2px solid #000;
+	padding-bottom: 25px;
+	padding-top: 25px;
+}
+
+.accordion {
+	color: #fff;
+	background-color: #000;
+	cursor: pointer;
+	width: 100%;
+	text-align: center;
+	border: none;
+	border-bottom: 2px solid #fff;
+	outline: none;
+	transition: 0.4s;
+	font-family: 'BadaBoom-BB', serif;
+	font-size: calc(1vw + 1vh);
+}
+
+.accordion:hover {
+	background-color: #f8d467;
+	text-shadow: 2px 2px black;
+}
+
+.panel {
+	display: none;
+	-moz-transition: 1s;
+	-ms-transition: 1s;
+	-o-transition: 1s;
+	-webkit-transition: 1s;
+	transition: 1s;
+}
+
+.deal-with-it {
+	background-image: url(../images/wowdoge.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+}
+
+#pay_qr {
 }

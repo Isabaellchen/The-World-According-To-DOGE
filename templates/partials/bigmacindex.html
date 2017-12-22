@@ -1,0 +1,17 @@
+<article class="topic">
+	<p class="headline">BigMacIndex</p>
+	<ul class="prices">
+		{% for country, data in prices.items() %}
+			<li class="single-price" style="order: {{ (data.final_value * -1000) | round | int }};">
+				<h2 style="transform: rotate({{ data.name_rotation }}deg)">{{ country }}</h2>
+				{% if data.flag_path %}
+					<img class="bigmac" src="{{ url_for('static', filename=data.bigmac_path) }}">
+					<img class="flag" src="{{ url_for('static', filename=data.flag_path) }}"></br>
+				{% endif %}
+				<p class="price_display">Ð{{ (data.final_value * currencies.USD.value) | round(2) }}</p><br/>
+			</li>
+		{% else %}
+			<li><em>Unbelievable.	No prices here!</em></li>
+		{% endfor %}
+	</ul>
+</article>

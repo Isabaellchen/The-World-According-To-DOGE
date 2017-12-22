@@ -42,6 +42,9 @@ class BigMacIndex(object):
         with open(self.temp_file, 'wb') as file:
             file.write(xls_file.content)
             
+        self.year = year
+        self.month = month
+        
         
     def read_index(self, timerange = 0):
         book = xlrd.open_workbook(self.temp_file)
@@ -58,14 +61,20 @@ class BigMacIndex(object):
                 
             rnd_burger_num = str(randrange(1,6))
                 
-            final_value = float(sheet.cell_value(row, 3))
-            flag_path = 'images/flags/' + abbreviation + '.png'
-            bigmac_path = 'images/bigmacs/bigmac' + rnd_burger_num + '.png'
-            name_rotation = str(randrange(-5,5))
-                
-            self.prices[name] = (final_value, flag_path, bigmac_path, name_rotation)
+            self.prices[name] = {
+                'final_value': float(sheet.cell_value(row, 3)),
+                'flag_path': 'images/flags/' + abbreviation + '.png',
+                'bigmac_path': 'images/bigmacs/bigmac' + rnd_burger_num + '.png',
+                'name_rotation': str(randrange(-5,5))
+            }
+            
         return self.prices
         
+    def getYear(self):
+        return self.year
+        
+    def getMonth(self):
+        return self.month
 
 index = BigMacIndex()
 

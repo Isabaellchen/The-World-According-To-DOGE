@@ -1,0 +1,8 @@
+{% extends "layout/doge2017.html" %}
+{% block body %}
+	<article class="page">
+		{% include 'partials/currencies.html' %}
+		{% include 'partials/bigmacindex.html' %}
+	</article>
+	<img src="{{ url_for('static', filename='images/rocket_bg.jpg') }}" class="rocket"/>
+{% endblock %}

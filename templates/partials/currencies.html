@@ -1,0 +1,29 @@
+<article class="topic">
+	<p class="headline">Currencies</p>
+	<ul class="currencies">
+		{% for currency, data in currencies.items() %}
+			<li>
+				<div class="currency">
+					<div class="currency-display">
+						<div class="currency-image">
+							<img class="bill" src="{{ url_for('static', filename='images/' + currency.lower() + '.png') }}"/>
+						</div>
+						<div class="currency-text">
+							<div class="description">Currently 1 {{ currency }} is at about:</div>
+							<div class="doge_value"><span class="dee">Ð</span>{{data.value|round(2)}}</div>
+						</div>
+					</div>
+					<div class="payment-form">
+						<div class="deal-with-it"></div>
+						<form action="send">
+							<p>Send the rough estimate value of <input class="amount inline-edit" type="text" name="amount"><span class="font2"> {{ currency }}</span> in dogecoin,
+								to address <input class="address inline-edit" type="text" name="address"></p>
+							<input type="hidden" name="currency" value="{{ currency }}">
+							<input type="submit" value="Go">
+						</form>
+					</div>
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
+</article>

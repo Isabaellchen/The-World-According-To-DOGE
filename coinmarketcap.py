@@ -18,4 +18,10 @@ class Coinmarketcap(object):
         tree = html.fromstring(page.content)
         value = tree.xpath('//tr[@id="id-dogecoin"]/td//a[@class="price"]/@data-' + symbol)
         float_value = float(value[0])
-        return {'value': 1 / float_value, 'cvalue' : float_value, 'utc': timestamp}
+        return {
+            'value': 1 / float_value, 
+            'cvalue' : float_value, 
+            'utc': timestamp,
+            'symbol': symbol.upper()
+		}
+        
