@@ -43,11 +43,11 @@ class TestingConfig(Config):
 
 
 # Load config
-app.config.from_object('twatdoge.ProductionConfig')
+app.config.from_object('twatdoge.DevelopmentConfig')
 
-accepted_symbols = ['USD', 'BTC']
+accepted_symbols = ['USD', 'BTC', 'DOGE']
 
-BigMacIndex.update_index(BigMacIndex)
+#BigMacIndex.update_index(BigMacIndex)
 
 @app.route('/')
 @cache.cached(timeout=300)

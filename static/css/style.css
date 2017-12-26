@@ -17,7 +17,7 @@ html, body {
 }
 
 body            {
-	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
 	background: #dc5202;
 	background-size: 100% 50%;
 	background-image: url("../images/head_bg.jpg");
@@ -35,7 +35,7 @@ body            {
 	overflow: hidden;
 }
 .dee            {
-	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
 	font-size: 5vw;
 	font-weight: 900;
 }
@@ -220,14 +220,14 @@ h2              {
 	flex-wrap: wrap;
 }
 .currency-display {
-	width: 60%;
+	width: 70%;
 }
 .payment-form	{
-	width: 40%;
+	width: 30%;
 	min-width: 160px;
 }
 .bill           {
-	max-height: 17vh;
+	max-height: calc(8vw + 8vh);
 	width: auto;
 	z-index: 5;
 	margin-top: 1vh;
@@ -262,7 +262,7 @@ input.inline-edit{
 
 	/* Inherit the parent element's typography */
 	text-align: center;
-	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
 	background-color: #793201;
     text-shadow: 2px 2px black;
 	font-size: 1.23vh;
@@ -295,7 +295,7 @@ input.amount	{
 }
 
 .deal-with-it {
-	background-image: url(../images/wowdoge.png);
+	background-image: url(../images/forward.png);
 	background-size: cover;
 	background-repeat: no-repeat;
 	width: calc(6vw + 6vh);
