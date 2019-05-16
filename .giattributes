@@ -1,2 +1,4 @@
 static/* linguist-vendored
-templates/*
+
+# Jinja templates
+.html linguist-language=Python
